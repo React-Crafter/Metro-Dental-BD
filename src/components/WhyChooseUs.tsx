@@ -43,7 +43,7 @@ export default function WhyChooseUs() {
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="order-2 lg:order-1 grid grid-cols-2 gap-4"
+            className="order-2 lg:order-1 grid grid-cols-1 md:grid-cols-2 gap-4"
           >
             {reasons.map((reason, i) => (
               <motion.div
