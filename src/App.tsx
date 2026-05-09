@@ -12,7 +12,7 @@ import ScrollToTop from "./components/ScrollToTop";
 
 export default function App() {
   return (
-    <div className="relative">
+    <div className="relative overflow-x-hidden">
       <Navbar />
       <main>
         <Hero />

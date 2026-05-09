@@ -27,16 +27,16 @@ export default function Navbar() {
   return (
     <nav
       className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled ? "glass shadow-md py-3" : "bg-transparent py-5"
+        (isScrolled || isOpen) ? "bg-white shadow-lg py-3" : "bg-transparent py-5"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           <div className="flex flex-col">
-            <span className={`font-display font-bold text-2xl tracking-tight ${isScrolled ? 'text-brand-600' : 'text-brand-600'}`}>
+            <span className={`font-display font-bold text-xl md:text-2xl tracking-tight text-brand-600`}>
               Metro Dental BD
             </span>
-            <span className={`text-[10px] font-medium uppercase tracking-[0.2em] ${isScrolled ? 'text-gray-500' : 'text-gray-600'}`}>
+            <span className={`text-[9px] md:text-[10px] font-medium uppercase tracking-[0.2em] ${isScrolled || isOpen ? 'text-gray-500' : 'text-gray-600'}`}>
               Dr Mustak Dental care
             </span>
           </div>
@@ -65,10 +65,10 @@ export default function Navbar() {
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-700 p-2"
+              className="text-gray-900 p-3 -mr-2 focus:outline-none transition-transform active:scale-90"
               aria-label="Toggle menu"
             >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
+              {isOpen ? <X size={28} className="text-brand-600" /> : <Menu size={28} />}
             </button>
           </div>
         </div>
@@ -78,21 +78,30 @@ export default function Navbar() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white border-t border-gray-100 overflow-hidden shadow-xl"
+            initial={{ opacity: 0, scaleY: 0.9, originY: 0 }}
+            animate={{ opacity: 1, scaleY: 1 }}
+            exit={{ opacity: 0, scaleY: 0.9 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="md:hidden bg-white border-t border-gray-100 overflow-hidden shadow-2xl absolute top-full left-0 w-full"
           >
-            <div className="px-4 pt-2 pb-6 space-y-1">
-              {navLinks.map((link) => (
-                <a
+            <div className="px-5 pt-4 pb-8 space-y-2">
+              {navLinks.map((link, idx) => (
+                <motion.a
                   key={link.name}
                   href={link.href}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: idx * 0.05 }}
                   onClick={() => setIsOpen(false)}
-                  className="block px-3 py-4 text-base font-medium text-gray-700 hover:bg-brand-50 hover:text-brand-600 rounded-lg transition-colors"
+                  className="flex items-center justify-between px-4 py-4 text-lg font-semibold text-gray-800 hover:bg-brand-50 hover:text-brand-600 rounded-xl transition-all border-b border-gray-50 last:border-0"
                 >
                   {link.name}
-                </a>
+                  <div className="w-8 h-8 rounded-full bg-brand-50 flex items-center justify-center text-brand-400">
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </motion.a>
               ))}
               <div className="px-3 pt-4">
                 <a

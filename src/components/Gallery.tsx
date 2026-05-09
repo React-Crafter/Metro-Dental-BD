@@ -3,7 +3,7 @@ import { IMAGES } from "../constants/images";
 
 export default function Gallery() {
   return (
-    <section id="gallery" className="py-24 bg-gray-50">
+    <section id="gallery" className="py-24 bg-gray-50 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <p className="text-brand-600 font-bold uppercase tracking-[0.2em] text-xs mb-4">Our Gallery</p>

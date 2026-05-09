@@ -28,7 +28,7 @@ export default function About() {
                 className="w-full h-[350px] md:h-[500px] object-cover"
               />
             </div>
-            <div className="absolute -bottom-6 -right-4 md:-bottom-10 md:-right-10 bg-brand-600 p-5 md:p-8 rounded-2xl md:rounded-3xl text-white shadow-2xl z-20">
+            <div className="absolute -bottom-6 -right-2 md:-bottom-10 md:-right-10 bg-brand-600 p-5 md:p-8 rounded-2xl md:rounded-3xl text-white shadow-2xl z-20">
               <p className="text-2xl md:text-4xl font-bold mb-1">15+</p>
               <p className="text-[10px] md:text-sm opacity-80 uppercase tracking-widest font-bold leading-tight">Years of Excellence</p>
             </div>
